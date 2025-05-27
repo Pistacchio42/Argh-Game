@@ -1,6 +1,8 @@
 
 import 'package:json_annotation/json_annotation.dart';
 
+part'Card.g.dart';
+
 @JsonSerializable(explicitToJson:true, includeIfNull:true) //TODO add serialization with Card.g.dart
 class Card{
   String name;
