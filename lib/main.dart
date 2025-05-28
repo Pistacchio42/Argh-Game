@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dice_icons/dice_icons.dart';
-import 'package:iconify_flutter_plus/iconify_flutter_plus.dart'; // For Iconify Widget
-import 'package:iconify_flutter_plus/icons/zondicons.dart'; // for Non Colorful
-//import 'package:iconify_flutter/iconify_flutter.dart';
-//import 'package:colorful_iconify_flutter/icons/twemoji.dart';
+import 'package:argh/resources/flutter-icons-21a1aafc/my_flutter_app_icons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.brown),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'AHOY'),
     );
   }
 }
@@ -29,7 +26,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -38,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String changingText = '';
 
   void _incrementCounter() {
+    print('c');
     setState(() {
       changingText="vai Disa";
     });
@@ -48,28 +45,43 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
         leading: Icon(Icons.anchor),
-        title: Text('Ahoy'),
         actions: <Widget>[
-          TextButton(onPressed: (){gotoOptions;}, child: Icon(Icons.settings)),
+          IconButton(
+            onPressed: gotoOptions,  //setTwo esegue un navigator Push con argomento 2 per cambiare scena
+            icon: const Icon(Icons.settings),
+            tooltip: 'vai alle opzioni?',
+          )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('mostra lista di scansioni');
+          _incrementCounter(); //va alla pagina di scansioni
+        },
+        tooltip: 'regole',
+        child: const Icon(Icons.rule),
       ),
       body: Center(
         child: Column(
-          // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('$changingText', style: Theme.of(context).textTheme.headlineMedium,),
-            TextButton(onPressed: gotoDice(), child: Icon(DiceIcons.dice3)),
-            //TODO TextButton(onPressed: gotoCard(), child: Iconify(Twemoji.joker)),
+            IconButton(
+              iconSize: 80.0,
+              onPressed: gotoDice,  //setTwo esegue un navigator Push con argomento 2 per cambiare scena
+              icon: const Icon(DiceIcons.dice5),
+              tooltip: 'vai alla schermata di lancio dadi',
+            ),
+            IconButton(
+              iconSize: 100.0,
+              onPressed: gotoCard,//setTwo esegue un navigator Push con argomento 3 per cambiare scena
+              icon: const Icon(MyFlutterApp.spades_card),
+              tooltip: 'estrai una carta',
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Suca',
-        child: const Icon(Icons.blur_on),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
