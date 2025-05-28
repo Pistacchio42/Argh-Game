@@ -9,7 +9,7 @@
 ///   fonts:
 ///    - family:  MyFlutterApp
 ///      fonts:
-///       - asset: fonts/custom_font.ttf
+///       - asset: fonts/kFontPkg.ttf
 ///
 /// 
 /// * RPG Awesome, Copyright (c) 2014, Daniela Howe
