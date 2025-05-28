@@ -6,7 +6,7 @@ import 'package:argh/resources/flutter-icons-21a1aafc/my_flutter_app_icons.dart'
 
 part 'GameCard.g.dart';
 
-@JsonSerializable(explicitToJson:true, includeIfNull:true) //TODO add serialization with GameCard.g.dart
+@JsonSerializable(explicitToJson:true, includeIfNull:true)
 class GameCard{
   String name;
   String content;
@@ -19,6 +19,13 @@ class GameCard{
     'Movimento': MyFlutterApp.radial_balance,
     'Battaglia': MyFlutterApp.crossed_pistols,
     'Effetto': MyFlutterApp.tentacle,
+  };
+
+  static final Map<String, Function> constructor={
+  'Tesoro': (String name, String content, int _quantity)=> GameCard.loot(name, content, _quantity),
+  'Movimento': (String name, String content, int _quantity)=> GameCard.move(name, content, _quantity),
+  'Battaglia': (String name, String content, int _quantity)=> GameCard.battle(name, content, _quantity),
+  'Effetto': (String name, String content, int _quantity)=> GameCard.effect(name, content, _quantity),
   };
 
   GameCard(this.name, this.content, this._quantity, this.type);
