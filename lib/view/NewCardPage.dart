@@ -17,8 +17,8 @@ class _NewCardPage extends State<NewCardPage> {
 
   _NewCardPage(this.controller);
 
-  String? _title;
-  String? _content;
+  String? _title='';
+  String? _content='';
   int _quantity = 1;
   String? _type='Tesoro';
 
@@ -82,13 +82,16 @@ class _NewCardPage extends State<NewCardPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  iconSize: 40,
-                  icon: Icon(
-                    GameCard.typeIcons[cardType] ?? Icons.question_mark,
-                    color: (_type==cardType)?Colors.green:Theme.of(context).primaryColor,
+                  icon: AnimatedSize(
+                    duration: Duration(milliseconds: 200),
+                    curve: Curves.easeOut,
+                      child: Icon(
+                        GameCard.typeIcons[cardType] ?? Icons.question_mark,
+                        color: (_type==cardType)?Colors.green:Colors.blueGrey,
+                        size: (_type==cardType)?60:50,
+                      ),
+                    ), onPressed: () => onCardSelected(cardType),
                   ),
-                  onPressed: () => onCardSelected(cardType),
-                ),
                 Text(cardType, style: const TextStyle(fontSize: 12)),
               ],
             ),
@@ -114,17 +117,17 @@ class _NewCardPage extends State<NewCardPage> {
           IconButton(
             icon: const Icon(Icons.remove),
             onPressed: () {
-              if (_quantity > 0) {
+              if (_quantity > 1) {
                 setState(() {
                   _quantity--;
                 });
               }
             },
             style: IconButton.styleFrom(
-              backgroundColor: _quantity == 0
+              backgroundColor: _quantity == 1
                   ? Colors.grey[300]
                   : Theme.of(context).primaryColor,
-              foregroundColor: _quantity == 0 ? Colors.grey : Colors.white,
+              foregroundColor: _quantity == 1 ? Colors.grey : Colors.white,
             ),
           ),
 
@@ -156,6 +159,6 @@ class _NewCardPage extends State<NewCardPage> {
   }
 
   createCard() {
-    controller.create(_title,_content,_type!,_quantity);
+    controller.create(_title!,_content!,_type!,_quantity);
   }
 }
