@@ -1,13 +1,13 @@
-part of 'Card.dart';
+part of 'GameCard.dart';
 
-Card _$CardFromJson(Map<String, dynamic> json) => Card(
+GameCard _$GameCardFromJson(Map<String, dynamic> json) => GameCard(
   json['name'] as String,
   json['content'] as String,
   json['qty'] as int,
   json['type'] as String,
 );
 
-Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
+Map<String, dynamic> _$GameCardToJson(GameCard instance) => <String, dynamic>{
   "name": instance.name,
   "content": instance.content,
   "qty":instance._quantity,

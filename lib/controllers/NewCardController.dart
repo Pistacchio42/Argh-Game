@@ -1,0 +1,6 @@
+class NewCardController{
+
+  NewCardController(){
+
+  }
+}
