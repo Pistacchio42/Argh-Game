@@ -1,5 +1,6 @@
 import 'package:argh/models/GameCard.dart';
 import 'package:flutter/material.dart';
+import 'package:infinite_carousel/infinite_carousel.dart';
 
 import '../controllers/NewCardController.dart';
 
@@ -67,15 +68,22 @@ class _NewCardPage extends State<NewCardPage> {
     );
   }
 
+  InfiniteScrollController scrontroll= InfiniteScrollController();
   typeWidget() {
     return SizedBox(
       height: 100, // Fixed height for the carousel
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        physics: const BouncingScrollPhysics(),
+      child: InfiniteCarousel.builder(
         itemCount: GameCard.allTypes.length,
-        itemBuilder: (context, index) {
-          final cardType = GameCard.allTypes[index];
+        itemExtent: 120,
+        center: true,
+        anchor: 0.0,
+        velocityFactor: 0.2,
+        onIndexChanged: (index) {},
+        controller: scrontroll,
+        axisDirection: Axis.horizontal,
+        loop: true,
+        itemBuilder: (context, itemIndex, realIndex) {
+          final cardType = GameCard.allTypes[itemIndex];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Column(
@@ -85,19 +93,19 @@ class _NewCardPage extends State<NewCardPage> {
                   icon: AnimatedSize(
                     duration: Duration(milliseconds: 200),
                     curve: Curves.easeOut,
-                      child: Icon(
-                        GameCard.typeIcons[cardType] ?? Icons.question_mark,
-                        color: (_type==cardType)?Colors.green:Colors.blueGrey,
-                        size: (_type==cardType)?60:50,
-                      ),
-                    ), onPressed: () => onCardSelected(cardType),
-                  ),
+                    child: Icon(
+                      GameCard.typeIcons[cardType] ?? Icons.question_mark,
+                      color: (_type==cardType)?Colors.green:Colors.blueGrey,
+                      size: (_type==cardType)?60:50,
+                    ),
+                  ), onPressed: () => onCardSelected(cardType),
+                ),
                 Text(cardType, style: const TextStyle(fontSize: 12)),
               ],
             ),
           );
         },
-      ),
+      )
     );
   }
 
