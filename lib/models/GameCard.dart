@@ -14,11 +14,19 @@ class GameCard{
   late String type;
 
   static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto'];
+
   static const Map<String, IconData> typeIcons = {
     'Tesoro': Icons.diamond,
     'Movimento': MyFlutterApp.radial_balance,
     'Battaglia': MyFlutterApp.crossed_pistols,
     'Effetto': MyFlutterApp.tentacle,
+  };
+
+  static const Map<String, Color> colorIcons = {
+    'Tesoro': Colors.lightBlueAccent,
+    'Movimento':Colors.brown,
+    'Battaglia': Colors.black,
+    'Effetto': Colors.pinkAccent,
   };
 
   static final Map<String, Function> constructor={

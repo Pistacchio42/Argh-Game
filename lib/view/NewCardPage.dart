@@ -18,10 +18,10 @@ class _NewCardPage extends State<NewCardPage> {
 
   _NewCardPage(this.controller);
 
-  String? _title='';
-  String? _content='';
+  String? _title = '';
+  String? _content = '';
   int _quantity = 1;
-  String? _type='Tesoro';
+  String? _type = 'Tesoro';
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _NewCardPage extends State<NewCardPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed:createCard(),
+        onPressed: createCard(),
         child: Icon(Icons.check),
       ),
     );
@@ -68,17 +68,20 @@ class _NewCardPage extends State<NewCardPage> {
     );
   }
 
-  InfiniteScrollController scrontroll= InfiniteScrollController();
+  InfiniteScrollController scrontroll = InfiniteScrollController();
+
   typeWidget() {
     return SizedBox(
-      height: 100, // Fixed height for the carousel
+      height: 150, // Fixed height for the carousel
       child: InfiniteCarousel.builder(
         itemCount: GameCard.allTypes.length,
         itemExtent: 120,
         center: true,
         anchor: 0.0,
-        velocityFactor: 0.2,
-        onIndexChanged: (index) {},
+        velocityFactor: 0.1,
+        onIndexChanged: (index) {
+          //onCardSelected(GameCard.allTypes[index]);
+        },
         controller: scrontroll,
         axisDirection: Axis.horizontal,
         loop: true,
@@ -95,23 +98,29 @@ class _NewCardPage extends State<NewCardPage> {
                     curve: Curves.easeOut,
                     child: Icon(
                       GameCard.typeIcons[cardType] ?? Icons.question_mark,
-                      color: (_type==cardType)?Colors.green:Colors.blueGrey,
-                      size: (_type==cardType)?60:50,
+                      color: (_type == cardType)
+                          ? GameCard.colorIcons[cardType]
+                          : Colors.blueGrey,
+                      size: (_type == cardType) ? 70 : 50,
                     ),
-                  ), onPressed: () => onCardSelected(cardType),
+                  ),
+                  onPressed: () => {
+                    onCardSelected(cardType),
+                    scrontroll.animateToItem(itemIndex),
+                  },
                 ),
                 Text(cardType, style: const TextStyle(fontSize: 12)),
               ],
             ),
           );
         },
-      )
+      ),
     );
   }
 
   void onCardSelected(String cardType) {
     setState(() {
-      _type=cardType;
+      _type = cardType;
     });
     print(_type);
   }
@@ -167,6 +176,6 @@ class _NewCardPage extends State<NewCardPage> {
   }
 
   createCard() {
-    controller.create(_title!,_content!,_type!,_quantity);
+    controller.create(_title!, _content!, _type!, _quantity);
   }
 }
