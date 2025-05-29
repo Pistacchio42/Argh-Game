@@ -3,7 +3,7 @@ part of 'GameCard.dart';
 GameCard _$GameCardFromJson(Map<String, dynamic> json) => GameCard(
   json['name'] as String,
   json['content'] as String,
-  json['qty'] as int,
+  int.parse(json['qty'] as String),
   json['type'] as String,
 );
 

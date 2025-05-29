@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -31,14 +33,6 @@ class GameCard{
     'Isola': Colors.green,
   };
 
-  static final Map<String, Function> constructor={
-  'Tesoro': (String name, String content, int _quantity)=> GameCard.loot(name, content, _quantity),
-  'Movimento': (String name, String content, int _quantity)=> GameCard.move(name, content, _quantity),
-  'Battaglia': (String name, String content, int _quantity)=> GameCard.battle(name, content, _quantity),
-  'Effetto': (String name, String content, int _quantity)=> GameCard.effect(name, content, _quantity),
-    'Isola': (String name, String content, int _quantity)=> GameCard.island(name, content, _quantity),
-  };
-
   GameCard(this.name, this.content, this._quantity, this.type);
 
   GameCard.loot(this.name, this.content,int quantity){GameCard._(name,content,quantity,'LOOT CARD');}
@@ -54,6 +48,16 @@ class GameCard{
   GameCard._(this.name, this.content,int quantity, this.type){
    assert (this._quantity>0);
    this._quantity=quantity;
+  }
+
+  String encode() {
+    return '{"name":"${this.name}", "content":"${this.content}", "qty":"${this._quantity}", "type":"${this._quantity}"}';
+
+    //return
+  }
+
+  static GameCard decode(String input){
+    return jsonDecode(input);
   }
 
   factory GameCard.fromJson(Map<String, dynamic> json)=> _$GameCardFromJson(json);

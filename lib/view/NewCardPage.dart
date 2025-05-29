@@ -42,15 +42,14 @@ class _NewCardPage extends State<NewCardPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: createCard(),
-        child: Icon(Icons.check),
-      ),
+      floatingActionButton: FloatingActionButton(onPressed: createCard, child: Icon(Icons.add)),
     );
   }
 
+  TextEditingController titleCont= TextEditingController();
   titleWidget() {
     return TextField(
+      controller: titleCont,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: 'Metti qui il titolo della carta',
@@ -58,9 +57,12 @@ class _NewCardPage extends State<NewCardPage> {
     );
   }
 
+
+  TextEditingController contCont= TextEditingController();
   contentWidget() {
     return TextField(
       maxLines: 8,
+      controller: contCont,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         hintText: 'Metti qui il Contenuto della carta',
@@ -176,7 +178,9 @@ class _NewCardPage extends State<NewCardPage> {
   }
 
   createCard() {
-    controller.create(_title!, _content!, _type!, _quantity);
+    print('creating card');
+    controller.create(titleCont.text, contCont.text!, _type!, _quantity);
+    controller.readAll();
   }
 
   getcolor(){
