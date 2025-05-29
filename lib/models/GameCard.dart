@@ -13,13 +13,14 @@ class GameCard{
   int _quantity=1;
   late String type;
 
-  static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto'];
+  static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto','Isola'];
 
   static const Map<String, IconData> typeIcons = {
     'Tesoro': Icons.diamond,
     'Movimento': MyFlutterApp.radial_balance,
     'Battaglia': MyFlutterApp.crossed_pistols,
     'Effetto': MyFlutterApp.tentacle,
+    'Isola':MyFlutterApp.hive_emblem,
   };
 
   static const Map<String, Color> colorIcons = {
@@ -27,6 +28,7 @@ class GameCard{
     'Movimento':Colors.brown,
     'Battaglia': Colors.black,
     'Effetto': Colors.pinkAccent,
+    'Isola': Colors.green,
   };
 
   static final Map<String, Function> constructor={
@@ -34,6 +36,7 @@ class GameCard{
   'Movimento': (String name, String content, int _quantity)=> GameCard.move(name, content, _quantity),
   'Battaglia': (String name, String content, int _quantity)=> GameCard.battle(name, content, _quantity),
   'Effetto': (String name, String content, int _quantity)=> GameCard.effect(name, content, _quantity),
+    'Isola': (String name, String content, int _quantity)=> GameCard.island(name, content, _quantity),
   };
 
   GameCard(this.name, this.content, this._quantity, this.type);
@@ -45,6 +48,8 @@ class GameCard{
   GameCard.battle(this.name, this.content,int quantity){GameCard._(name,content,quantity,'BATTLE CARD');}
 
   GameCard.effect(this.name, this.content,int quantity){GameCard._(name,content,quantity,'EFFECT CARD');}
+
+  GameCard.island(this.name, this.content,int quantity){GameCard._(name,content,quantity,'ISLAND CARD');}
 
   GameCard._(this.name, this.content,int quantity, this.type){
    assert (this._quantity>0);

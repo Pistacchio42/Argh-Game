@@ -106,7 +106,7 @@ class _NewCardPage extends State<NewCardPage> {
                   ),
                   onPressed: () => {
                     onCardSelected(cardType),
-                    scrontroll.animateToItem(itemIndex),
+                    scrontroll.animateToItem(realIndex),
                   },
                 ),
                 Text(cardType, style: const TextStyle(fontSize: 12)),
@@ -177,5 +177,9 @@ class _NewCardPage extends State<NewCardPage> {
 
   createCard() {
     controller.create(_title!, _content!, _type!, _quantity);
+  }
+
+  getcolor(){
+
   }
 }
