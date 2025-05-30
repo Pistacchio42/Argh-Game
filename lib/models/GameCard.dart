@@ -11,7 +11,7 @@ part 'GameCard.g.dart';
 class GameCard{
   String name;
   String content;
-  int _quantity=1;
+  int quantity=1;
   String type;
 
   static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto','Isola'];
@@ -32,13 +32,13 @@ class GameCard{
     'Isola': Color.fromARGB(255,190, 236, 120),
   };
 
-  GameCard(this.name, this.content, this._quantity, this.type);
+  GameCard(this.name, this.content, this.quantity, this.type);
 
-  GameCard.loot(name, content, quantity):name=name, content=content, _quantity=quantity, type='Tesoro';
-  GameCard.move(name, content, quantity):name=name, content=content, _quantity=quantity, type=  'Movimento';
-  GameCard.battle(name, content, quantity):name=name, content=content, _quantity=quantity, type='Battaglia';
-  GameCard.effect(name, content, quantity):name=name, content=content, _quantity=quantity, type='Effetto';
-  GameCard.island(name, content, quantity):name=name, content=content, _quantity=quantity, type='Isola';
+  GameCard.loot(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Tesoro';
+  GameCard.move(name, content, quantity):name=name, content=content, this.quantity=quantity, type= 'Movimento';
+  GameCard.battle(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Battaglia';
+  GameCard.effect(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Effetto';
+  GameCard.island(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Isola';
 
   static Map<String, Function> allConstruction = {
     'Tesoro': (String name,String content,int _quantity)=>GameCard.loot(name, content, _quantity),
@@ -49,8 +49,8 @@ class GameCard{
   };
 
   GameCard._(this.name, this.content,int quantity, this.type){
-   assert (this._quantity>0);
-   this._quantity=quantity;
+   assert (this.quantity>0);
+   this.quantity=quantity;
    this.type=type;
   }
 
@@ -65,8 +65,8 @@ class GameCard{
   GameCard.fromJson(Map<String, dynamic> json)
   :name= json['name'] as String,
         content= json['content']as String,
-        _quantity= json['qty'],
+        quantity= json['qty'],
         type=json['type']as String;
 
-  Map<String, dynamic> toJson()=>{'name':name, 'content':content, 'qty':_quantity, 'type':type};
+  Map<String, dynamic> toJson()=>{'name':name, 'content':content, 'qty':quantity, 'type':type};
 }

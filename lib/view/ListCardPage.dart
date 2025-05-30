@@ -16,7 +16,7 @@ class _ListCardPage extends State<ListCardPage> {
 
   _ListCardPage(this.controller);
 
-  late List<GameCard> cardList=[];
+  late List<GameCard> cardList = [];
 
   @override
   initState() {
@@ -35,7 +35,8 @@ class _ListCardPage extends State<ListCardPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
-        title: Text('Ecco le carte',style: TextStyle(color: Colors.white,),),
+        title: Text('Ecco le carte', style: TextStyle(color: Colors.white)),
+        actions: <Widget>[getDropdown(), ],
       ),
       body: ListView.builder(
         itemCount: cardList!.length,
@@ -43,29 +44,52 @@ class _ListCardPage extends State<ListCardPage> {
           return cardTile(index);
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: ()=>
-      {
-        confirmChanges(),
-      }, child: Icon(Icons.check)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {confirmChanges()},
+        child: Icon(Icons.check),
+      ),
     );
   }
 
   cardTile(int index) {
     GameCard card = cardList[index];
     return Padding(
-      padding: EdgeInsets.all(4),
-      child: ListTile(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        leading: Icon(GameCard.typeIcons[card.type] ?? Icons.question_mark,size: 30,color: invert(GameCard.colorIcons[card.type]!),),
-        tileColor: GameCard.colorIcons[card.type] ?? Colors.black,
-        title: Text('${card.name}',style:TextStyle(color: invert(GameCard.colorIcons[card.type]!), fontSize: 30)),
-        subtitle: Text('${card.content}',style:TextStyle(color: invert(GameCard.colorIcons[card.type]!))),
-        trailing: IconButton(onPressed: ()=>{
-          cardList.removeAt(index),
-          setState(() {
-            cardList;
-          })
-        }, icon: Icon(Icons.delete, color: Colors.red)),
+      padding: EdgeInsets.all(6),
+      child: Expanded(
+        child: ListTile(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          leading: Expanded(
+            child: Icon(
+              GameCard.typeIcons[card.type] ?? Icons.question_mark,
+              size: 40,
+              color: invert(GameCard.colorIcons[card.type]!),
+            ),
+          ),
+          tileColor: GameCard.colorIcons[card.type] ?? Colors.black,
+          title: Text(
+            '${card.name}',
+            style: TextStyle(
+              color: invert(GameCard.colorIcons[card.type]!),
+              fontSize: 30,
+            ),
+          ),
+          subtitle: Text(
+            '${card.content}',
+            style: TextStyle(
+              color: invert(GameCard.colorIcons[card.type]!),
+              fontSize: 20,
+            ),
+          ),
+          trailing: Text(
+            '${card.quantity}',
+            style: TextStyle(
+              color: invert(GameCard.colorIcons[card.type]!),
+              fontSize: 25,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -75,7 +99,9 @@ class _ListCardPage extends State<ListCardPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text("Ho modificato le carte"),
-        content: const Text("Ho reso permanenti le modifiche che hai fatto in questa schermata"),
+        content: const Text(
+          "Ho reso permanenti le modifiche che hai fatto in questa schermata",
+        ),
         actions: <Widget>[
           TextButton(
             onPressed: () {
@@ -89,6 +115,71 @@ class _ListCardPage extends State<ListCardPage> {
     controller.saveChanges(cardList);
   }
 
+  getDropdown() {
+    return IconButton(onPressed: () => importJson(), icon: Icon(Icons.add));
+  }
+
+  importJson() {
+    TextEditingController t = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text(
+          "Inserisci qui la lista di Json per l'import manuale",
+        ),
+        content: TextField(controller: t),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => {
+              controller.parse(t.text),
+              setState(() {
+                cardList;
+              }),
+              Navigator.of(ctx).pop(),
+            },
+            child: const Text("Importa"),
+          ),
+        ],
+      ),
+    );
+    controller.saveChanges(cardList);
+  }
+
+  info() {
+
+    int numerocarte= 0;
+    final Map<String, int> count = Map();
+
+    for (GameCard g in cardList){
+      numerocarte+= g.quantity;
+      if(!count.keys.contains(g.type)) count[g.type]=g.quantity;
+      else count[g.type] = count[g.type]! + g.quantity;
+
+    }
+
+    return IconButton(
+      onPressed: () => showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text(
+            "Informazioni su tutte le carte",
+          ),
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
+            Text('Ci sono in totale $numerocarte carte'),
+            ListView.builder(
+              itemCount: GameCard.allTypes!.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Text('Ci sono ${count[GameCard.allTypes[index]]} carte ${GameCard.allTypes[index]}');
+              },
+            ),
+
+          ],),
+        ),
+      ),
+      icon: Icon(Icons.question_mark),
+    );
+  }
 }
 
 Color invert(Color color) {
@@ -97,5 +188,3 @@ Color invert(Color color) {
   final b = 255 - color.blue;
   return Color.fromARGB((color.opacity * 255).round(), r, g, b);
 }
-
-

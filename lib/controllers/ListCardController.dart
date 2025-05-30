@@ -26,4 +26,27 @@ class ListCardController {
   Future<void> saveChanges(List<GameCard> cardList) async {
     await storage.write(key: SECURE_KEY, value: jsonEncode(cardList));
   }
+
+  Future<void> parse(String value)  async {
+
+    String cc = await storage.read(key: SECURE_KEY) ?? '';
+    print('loaded $cc');
+    List<dynamic> jsonList=[];
+    if(cc!='')
+      jsonList = jsonDecode(cc);
+    List<GameCard> old= jsonList.map((dynamic item) {
+      return GameCard.decode(jsonEncode(item));
+    }).toList();
+
+    List<dynamic> jsonList2=[];
+    if(value!='')
+      jsonList2 = jsonDecode(value);
+    List<GameCard> newCard = jsonList2.map((dynamic item) {
+      return GameCard.decode(jsonEncode(item));
+    }).toList();
+
+    old.addAll(newCard);
+    await storage.write(key: SECURE_KEY, value: jsonEncode(old));
+
+  }
 }

@@ -10,6 +10,6 @@ GameCard _$GameCardFromJson(Map<String, dynamic> json) => GameCard(
 Map<String, dynamic> _$GameCardToJson(GameCard instance) => <String, dynamic>{
   "name": instance.name,
   "content": instance.content,
-  "qty":instance._quantity,
+  "qty":instance.quantity,
   "type":instance.type
 };

@@ -34,8 +34,9 @@ class NewCardController {
   Future<List<GameCard>> readAll() async {
     String value = await storage.read(key: SECURE_KEY) ?? '';
     print('loaded $value');
-    List<dynamic> jsonList = jsonDecode(value);
-
+    List<dynamic> jsonList=[];
+    if(value!='' )
+      jsonList = jsonDecode(value);
     return jsonList.map((dynamic item) {
       return GameCard.decode(jsonEncode(item));
     }).toList();
