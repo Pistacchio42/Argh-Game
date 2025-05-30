@@ -1,6 +1,5 @@
 
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -13,7 +12,7 @@ class GameCard{
   String name;
   String content;
   int _quantity=1;
-  late String type;
+  String type;
 
   static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto','Isola'];
 
@@ -35,32 +34,39 @@ class GameCard{
 
   GameCard(this.name, this.content, this._quantity, this.type);
 
-  GameCard.loot(this.name, this.content,int quantity){GameCard._(name,content,quantity,'LOOT CARD');}
+  GameCard.loot(name, content, quantity):name=name, content=content, _quantity=quantity, type='Tesoro';
+  GameCard.move(name, content, quantity):name=name, content=content, _quantity=quantity, type=  'Movimento';
+  GameCard.battle(name, content, quantity):name=name, content=content, _quantity=quantity, type='Battaglia';
+  GameCard.effect(name, content, quantity):name=name, content=content, _quantity=quantity, type='Effetto';
+  GameCard.island(name, content, quantity):name=name, content=content, _quantity=quantity, type='Isola';
 
-  GameCard.move(this.name, this.content,int quantity){GameCard._(name,content,quantity,'MOVEMENT CARD');}
-
-  GameCard.battle(this.name, this.content,int quantity){GameCard._(name,content,quantity,'BATTLE CARD');}
-
-  GameCard.effect(this.name, this.content,int quantity){GameCard._(name,content,quantity,'EFFECT CARD');}
-
-  GameCard.island(this.name, this.content,int quantity){GameCard._(name,content,quantity,'ISLAND CARD');}
+  static Map<String, Function> allConstruction = {
+    'Tesoro': (String name,String content,int _quantity)=>GameCard.loot(name, content, _quantity),
+    'Movimento': (String name,String content,int _quantity)=>GameCard.move(name, content, _quantity),
+    'Battaglia': (String name,String content,int _quantity)=>GameCard.battle(name, content, _quantity),
+    'Effetto': (String name,String content,int _quantity)=>GameCard.effect(name, content, _quantity),
+    'Isola': (String name,String content,int _quantity)=>GameCard.island(name, content, _quantity),
+  };
 
   GameCard._(this.name, this.content,int quantity, this.type){
    assert (this._quantity>0);
    this._quantity=quantity;
+   this.type=type;
   }
 
-  String encode() {
-    return '{"name":"${this.name}", "content":"${this.content}", "qty":"${this._quantity}", "type":"${this._quantity}"}';
-
-    //return
+  String encode(GameCard card) {
+    return jsonEncode(card);
   }
 
   static GameCard decode(String input){
-    return jsonDecode(input);
+     return GameCard.fromJson(jsonDecode(input) as Map<String, dynamic>);
   }
 
-  factory GameCard.fromJson(Map<String, dynamic> json)=> _$GameCardFromJson(json);
-  Map<String, dynamic> toJson() => _$GameCardToJson(this);
+  GameCard.fromJson(Map<String, dynamic> json)
+  :name= json['name'] as String,
+        content= json['content']as String,
+        _quantity= json['qty'],
+        type=json['type']as String;
 
+  Map<String, dynamic> toJson()=>{'name':name, 'content':content, 'qty':_quantity, 'type':type};
 }

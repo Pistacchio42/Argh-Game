@@ -97,15 +97,15 @@ class _MyHomePageState extends State<MyHomePage> {
         const PopupMenuItem<String>(
           value: 'add_card',
           child: ListTile(
-            leading: Icon(Icons.add, color: Colors.brown),
+            leading: Icon(Icons.add, color: Colors.green),
             title: Text('Aggiungi Carta'),
           ),
         ),
         const PopupMenuItem<String>(
-          value: 'restore_all',
+          value: 'show_cards',
           child: ListTile(
-            leading: Icon(Icons.delete, color: Colors.red),
-            title: Text('Cancella tutto'),
+            leading: Icon(Icons.list_alt, color: Colors.yellow),
+            title: Text('Sfoglia Carte'),
           ),
         ),
       ],
@@ -114,8 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
           case 'add_card':
             gotoCardOptions();
             break;
-          case 'restore_all':
-            restore();
+          case 'show_cards':
+            gotoCardList();
             break;
         }
       },
@@ -142,5 +142,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   gotoCard() {
     print('goto Card');
+  }
+
+  void gotoCardList() {
+    print('goto Card List');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NewCardPage(controller: NewCardController()),
+      ),
+    );
   }
 }

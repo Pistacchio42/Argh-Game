@@ -21,7 +21,7 @@ class _NewCardPage extends State<NewCardPage> {
   String? _title = '';
   String? _content = '';
   int _quantity = 1;
-  String? _type = 'Tesoro';
+  String type = 'Tesoro';
 
   @override
   Widget build(BuildContext context) {
@@ -74,10 +74,10 @@ class _NewCardPage extends State<NewCardPage> {
 
   typeWidget() {
     return SizedBox(
-      height: 150, // Fixed height for the carousel
+      height: 120, // Fixed height for the carousel
       child: InfiniteCarousel.builder(
         itemCount: GameCard.allTypes.length,
-        itemExtent: 120,
+        itemExtent: 90,
         center: true,
         anchor: 0.0,
         velocityFactor: 0.1,
@@ -100,13 +100,14 @@ class _NewCardPage extends State<NewCardPage> {
                     curve: Curves.easeOut,
                     child: Icon(
                       GameCard.typeIcons[cardType] ?? Icons.question_mark,
-                      color: (_type == cardType)
+                      color: (type == cardType)
                           ? GameCard.colorIcons[cardType]
                           : Colors.blueGrey,
-                      size: (_type == cardType) ? 70 : 50,
+                      size: (type == cardType) ? 70 : 50,
                     ),
                   ),
                   onPressed: () => {
+                    type=cardType,
                     onCardSelected(cardType),
                     scrontroll.animateToItem(realIndex),
                   },
@@ -122,9 +123,9 @@ class _NewCardPage extends State<NewCardPage> {
 
   void onCardSelected(String cardType) {
     setState(() {
-      _type = cardType;
+      type = cardType;
     });
-    print(_type);
+    print('tipo: $type');
   }
 
   quantityWidget() {
@@ -179,8 +180,14 @@ class _NewCardPage extends State<NewCardPage> {
 
   createCard() {
     print('creating card');
-    controller.create(titleCont.text, contCont.text!, _type!, _quantity);
-    controller.readAll();
+    if(titleCont.text!='' && contCont.text!='')
+      controller.create(titleCont.text, contCont.text, type, _quantity);
+    setState(() {
+      contCont.clear();
+      titleCont.clear();
+      _quantity=1;
+    });
+    //controller.readAll();
   }
 
   getcolor(){
