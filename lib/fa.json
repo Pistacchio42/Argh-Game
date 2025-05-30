@@ -1,0 +1,320 @@
+[
+  {
+    "name": "Rumore di tempesta",
+    "content": "Un altro giocatore muove la tua barca per il prossimo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Mal di mare",
+    "content": "nel prossimo turno il giocatore non può girare",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Maledizione dell'isola",
+    "content": "il giocatore non può approdare in nessun isola questo turno",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Ammutinamento",
+    "content": "scarta una carta bottino a caso",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Scorbuto",
+    "content": "ogni turno perdi un movimento, fino a quando non attracchi su un isola",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Accuse di pirateria",
+    "content": "devi scartare a caso una carta qualsiasi da quelle che hai in mano",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Bussola rotta",
+    "content": "non puoi approdare all'isola più vicina per il prossimo turno",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Vele rovinate",
+    "content": "ti puoi muovere solo di metà del numero dei dadi per questo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Mari non mappati",
+    "content": "stai fermo per un turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Isola maledetta",
+    "content": "al prossimo approdo ad un isola devi pescare solo metà delle carte bottino, in caso fosse una sola non peschi niente (arrotonda per difetto)",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Sensi di colpa",
+    "content": "ridai a un giocatore il bottino che gli hai rubato",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Calma prima della tempesta",
+    "content": "questo turno non puoi muoverti, il prossimo turno ti muovi il doppio dei dadi",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Mare mosso",
+    "content": "fai scegliere un dado ad un altro giocatore, dovrai scartare quel dado questo turno",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Kraken",
+    "content": "perdi metà delle tue carte bottino",
+    "qty": 3,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Precauzioni",
+    "content": "il prossimo turno devi muoverti solo di 3 ma puoi girare quanto vuoi",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Binocolo",
+    "content": "muoviti all'isola più vicina se è meno distante di 4 caselle",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Diplomazia forzata",
+    "content": "mischia il tuo tesoro con quello di un avversario e dividi a metà il mazzo, se le carte sono dispari prendine una in più, conserva questa carta",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Fidarsi del mare",
+    "content": "puoi ritirare un dado, conserva questa carta",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Parlè",
+    "content": "scegli un giocatore che non ti può attaccare per 3 turni",
+    "qty": 4,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Vera diplomazia",
+    "content": "condividi le tue risorse con un altro giocatore, conserva questa carta",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Commercio",
+    "content": "scambia una carta per attaccare con una carta bottino a caso di un altro giocatore",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Taglia sulla testa",
+    "content": "scegli un giocatore, chi sconfigge quel giocatore in un duello pesca una carta bottino oltre alle ricompense normali, conserva questa carta",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Prestare l'astrolabio",
+    "content": "scegli un altro giocatore che si muoverà di 2 in più il prossimo turno, conserva questa carta",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Mappa del tesoro",
+    "content": "pesca una carta bottino in più quando approdi alla prossima isola",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "False informazioni",
+    "content": "muovi la barca di un altro giocatore a scelta il suo prossimo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Bassa marea",
+    "content": "le navi adiacenti alle isole non possono muoversi questo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Tempesta a largo",
+    "content": "i giocatori non attraccati ad un isola il prossimo turno, perdono una carta bottino",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Protezione dei locali",
+    "content": "appena attracchi un'isola puoi scartare una carta bottino scelta a caso per fare in modo che nessuno ti possa secgliere per niente nei prossimi 2 turni, conserva questa carta",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Scavare più a fondo",
+    "content": "puoi restare un turno in più attraccato ad un' isola per raddoppiare le carte bottino pescate, conserva questa carta",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Nativi amichevoli",
+    "content": "pesca una carta attacco in più",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Reliquia maledetta",
+    "content": "perdi un bottino ogni turno che hai questa carta, può essere passata attaccando un avversario e viene distrutta appena il giocatore che la possiede non ha più carte bottino",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Vento in poppa",
+    "content": "muoviti di due in più, da usare subito",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Remate",
+    "content": "muoviti di due in più, conserva questa carta",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Navigare nel fiume",
+    "content": "dopo essere approdato su un'isola puoi mettere la nave dove preferisci sul perimetro dell'isola",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Mulinello",
+    "content": "un altro giocatore gira la tua nave, tu la muovi",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Canti da mariani",
+    "content": "il morale alto ti fa ritirare un dado",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Seguiamo i delfini",
+    "content": "arriva diretto all'isola più vicina, senza attraccare al porto",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Kraken in vista",
+    "content": "ritorna da dove sei arrivato per evitare il kraken",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Stormo di gabbiani",
+    "content": "scarta una delle tue carte a caso",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Avvistamento relitti",
+    "content": "pesca una carta bottino",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Urlare ai quattro venti",
+    "content": "mostra a tutti la tua carta bottino più alta",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Idolo dorato",
+    "content": "questa carta vale come 300 dobloni di bottino, conserva questa carta",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Canto delle sirene",
+    "content": "muovi le barche avversarie di 1 casella verso di te se non vanno incontro ad un isola, muovi anche quelle attraccate ai porti",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Risorse scarse",
+    "content": "da questo momento in poi, ogni volta che un giocatore attracca ad un porto, viene girata une cella dell'isola; se non è la prima volta che peschi questa carta pesca una carta bottino",
+    "qty": 3,
+    "type": "Effetto"
+  },
+  {
+    "name": "Nuove risorse",
+    "content": "scegli un isola e ripristina una sua cella, conserva questa carta",
+    "qty": 4,
+    "type": "Isola"
+  },
+  {
+    "name": "Miracolo",
+    "content": "scegli un isola e ripristina tutte le sue celle",
+    "qty": 4,
+    "type": "Isola"
+  },
+  {
+    "name": "Tsunami",
+    "content": "scegli un isola e gira verso l'alto tutti i teschi",
+    "qty": 4,
+    "type": "Isola"
+  },
+  {
+    "name": "Mercenari",
+    "content": "prendi una carta bottino da ogni giocatore",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Carte scoperte",
+    "content": "mostra a tutti il tuo bottino",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Commercio in mare aperto",
+    "content": "scarta una carta per attaccare, pesca due carte bottino",
+    "qty": 4,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Caccia ai mostri marini",
+    "content": "pesca due carte bottino in più quando attracchi alla prossima isola",
+    "qty": 1,
+    "type": "Tesoro"
+  },
+  {
+    "name": "Prepararsi all'attacco",
+    "content": "la prossima volta che attracchi ad un porto pesca carte per attaccare fino a quando non ne hai 5 (invece che le solite 3)",
+    "qty": 4,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Veliero fantasma",
+    "content": "lancia il dado e scarta quel numero di carte bottino",
+    "qty": 2,
+    "type": "Tesoro"
+  }
+]

@@ -36,7 +36,7 @@ class _ListCardPage extends State<ListCardPage> {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text('Ecco le carte', style: TextStyle(color: Colors.white)),
-        actions: <Widget>[getDropdown(), ],
+        actions: <Widget>[getDropdown(),info()],
       ),
       body: ListView.builder(
         itemCount: cardList!.length,
@@ -146,40 +146,54 @@ class _ListCardPage extends State<ListCardPage> {
   }
 
   info() {
-
-    int numerocarte= 0;
+    int numerocarte = 0;
     final Map<String, int> count = Map();
 
-    for (GameCard g in cardList){
-      numerocarte+= g.quantity;
-      if(!count.keys.contains(g.type)) count[g.type]=g.quantity;
-      else count[g.type] = count[g.type]! + g.quantity;
-
+    for (GameCard g in cardList) {
+      numerocarte += g.quantity;
+      if (!count.keys.contains(g.type))
+        count[g.type] = g.quantity;
+      else
+        count[g.type] = count[g.type]! + g.quantity;
     }
-
     return IconButton(
-      onPressed: () => showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: const Text(
-            "Informazioni su tutte le carte",
-          ),
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
-            Text('Ci sono in totale $numerocarte carte'),
-            ListView.builder(
-              itemCount: GameCard.allTypes!.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Text('Ci sono ${count[GameCard.allTypes[index]]} carte ${GameCard.allTypes[index]}');
-              },
-            ),
-
-          ],),
-        ),
-      ),
+      onPressed: () => infoPressed(numerocarte, count),
       icon: Icon(Icons.question_mark),
     );
   }
+
+  infoPressed(int numerocarte, Map<String, int> count) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text("Informazioni su tutte le $numerocarte carte", style: TextStyle(fontSize: 25),),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+        content: setUpAlertDialog(count),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => {Navigator.of(ctx).pop(),},
+            child: const Text("Capito"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget setUpAlertDialog(Map<String, int> count) {
+
+  return Container(
+    height: 100.0, // Change as per your requirement
+    width: 300.0, // Change as per your requirement
+    child: ListView.builder(
+      shrinkWrap: true,
+      itemCount: count.keys.length,
+      itemBuilder: (BuildContext context, int index) {
+        print('tipo: ${count.keys.toList()[index]}');
+        return Text('Ci sono ${count[count.keys.toList()[index]]} carte di tipo ${count.keys.toList()[index]}', style: TextStyle(fontSize: 15),);
+      },
+    ),
+  );
 }
 
 Color invert(Color color) {
