@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'controllers/NewCardController.dart';
 import 'view/NewCardPage.dart';
+import 'controllers/ListCardController.dart';
+import 'view/ListCardPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -144,12 +146,12 @@ class _MyHomePageState extends State<MyHomePage> {
     print('goto Card');
   }
 
-  void gotoCardList() {
+  gotoCardList() {
     print('goto Card List');
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => NewCardPage(controller: NewCardController()),
+        builder: (context) => ListCardPage(controller: ListCardController()),
       ),
     );
   }

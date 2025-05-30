@@ -25,11 +25,11 @@ class GameCard{
   };
 
   static const Map<String, Color> colorIcons = {
-    'Tesoro': Colors.lightBlueAccent,
-    'Movimento':Colors.brown,
-    'Battaglia': Colors.black,
-    'Effetto': Colors.pinkAccent,
-    'Isola': Colors.green,
+    'Tesoro': Color.fromARGB(255,110, 255, 255),
+    'Movimento':Color.fromARGB(255,255, 191, 0),
+    'Battaglia': Color.fromARGB(255,64, 64, 64),
+    'Effetto': Color.fromARGB(255,199, 0, 57),
+    'Isola': Color.fromARGB(255,190, 236, 120),
   };
 
   GameCard(this.name, this.content, this._quantity, this.type);

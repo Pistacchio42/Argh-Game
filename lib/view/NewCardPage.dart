@@ -1,7 +1,7 @@
 import 'package:argh/models/GameCard.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
-
+import 'package:argh/resources/flutter-icons-21a1aafc/my_flutter_app_icons.dart';
 import '../controllers/NewCardController.dart';
 
 class NewCardPage extends StatefulWidget {
@@ -27,45 +27,52 @@ class _NewCardPage extends State<NewCardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.green,
         title: Text('Aggiungi una carta al gioco'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            titleWidget(),
-            contentWidget(),
-            typeWidget(),
-            quantityWidget(),
-          ],
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          titleWidget(),
+          contentWidget(),
+          typeWidget(),
+          quantityWidget(),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createCard,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+
+  TextEditingController titleCont = TextEditingController();
+
+  titleWidget() {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: TextField(
+        controller: titleCont,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'Metti qui il titolo della carta',
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: createCard, child: Icon(Icons.add)),
     );
   }
 
-  TextEditingController titleCont= TextEditingController();
-  titleWidget() {
-    return TextField(
-      controller: titleCont,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: 'Metti qui il titolo della carta',
-      ),
-    );
-  }
+  TextEditingController contCont = TextEditingController();
 
-
-  TextEditingController contCont= TextEditingController();
   contentWidget() {
-    return TextField(
-      maxLines: 8,
-      controller: contCont,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-        hintText: 'Metti qui il Contenuto della carta',
+    return Padding(
+      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+      child: TextField(
+        maxLines: 8,
+        controller: contCont,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'Metti qui il Contenuto della carta',
+        ),
       ),
     );
   }
@@ -107,7 +114,7 @@ class _NewCardPage extends State<NewCardPage> {
                     ),
                   ),
                   onPressed: () => {
-                    type=cardType,
+                    type = cardType,
                     onCardSelected(cardType),
                     scrontroll.animateToItem(realIndex),
                   },
@@ -180,17 +187,15 @@ class _NewCardPage extends State<NewCardPage> {
 
   createCard() {
     print('creating card');
-    if(titleCont.text!='' && contCont.text!='')
+    if (titleCont.text != '' && contCont.text != '')
       controller.create(titleCont.text, contCont.text, type, _quantity);
     setState(() {
       contCont.clear();
       titleCont.clear();
-      _quantity=1;
+      _quantity = 1;
     });
     //controller.readAll();
   }
 
-  getcolor(){
-
-  }
+  getcolor() {}
 }
