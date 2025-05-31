@@ -223,7 +223,7 @@ class _ListCardPage extends State<ListCardPage> {
                         },
                         icon: Icon(Icons.remove),
                       ),
-                      Text(quantity as String),
+                      Text('$quantity'),
                       IconButton(
                         onPressed: () => {
                           cardToModify.quantity++,

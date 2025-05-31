@@ -87,7 +87,7 @@ class _NewCardPage extends State<NewCardPage> {
         itemExtent: 90,
         center: true,
         anchor: 0.0,
-        velocityFactor: 0.1,
+        velocityFactor: 0.8,
         onIndexChanged: (index) {
           //onCardSelected(GameCard.allTypes[index]);
         },
