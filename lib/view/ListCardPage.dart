@@ -36,7 +36,7 @@ class _ListCardPage extends State<ListCardPage> {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text('Ecco le carte', style: TextStyle(color: Colors.white)),
-        actions: <Widget>[getDropdown(),info()],
+        actions: <Widget>[getDropdown(), info()],
       ),
       body: ListView.builder(
         itemCount: cardList!.length,
@@ -57,13 +57,19 @@ class _ListCardPage extends State<ListCardPage> {
       padding: EdgeInsets.all(6),
       child: Expanded(
         child: ListTile(
+          onLongPress: () => {
+            longPressCallback(card, index),
+            setState(() {
+              cardList;
+            }),
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           leading: Expanded(
             child: Icon(
               GameCard.typeIcons[card.type] ?? Icons.question_mark,
-              size: 40,
+              size: 30,
               color: invert(GameCard.colorIcons[card.type]!),
             ),
           ),
@@ -166,22 +172,91 @@ class _ListCardPage extends State<ListCardPage> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text("Informazioni su tutte le $numerocarte carte", style: TextStyle(fontSize: 25),),
+        title: Text(
+          "Informazioni su tutte le $numerocarte carte",
+          style: TextStyle(fontSize: 25),
+        ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
         content: setUpAlertDialog(count),
         actions: <Widget>[
           TextButton(
-            onPressed: () => {Navigator.of(ctx).pop(),},
+            onPressed: () => {Navigator.of(ctx).pop()},
             child: const Text("Capito"),
           ),
         ],
       ),
     );
   }
+
+  Future<void> longPressCallback(GameCard cardToModify, index) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        int quantity = cardToModify.quantity;
+        TextEditingController contTitle = TextEditingController();
+        TextEditingController contContent = TextEditingController();
+        contContent.text = cardToModify.content;
+        contTitle.text = cardToModify.name;
+        return Expanded(
+          child: Container(
+            height: 200,
+            child: AlertDialog(
+              title: Text('Modifica carta'),
+              content: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextField(controller: contTitle),
+                  TextField(controller: contContent, maxLines: 8),
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                        onPressed: () => {
+                          cardToModify.quantity--,
+                          if (cardToModify.quantity <= 0)
+                            {
+                              cardList.removeAt(index),
+                              Navigator.of(context).pop,
+                            },
+                          setState(() {
+                            quantity--;
+                          }),
+                        },
+                        icon: Icon(Icons.remove),
+                      ),
+                      Text(quantity as String),
+                      IconButton(
+                        onPressed: () => {
+                          cardToModify.quantity++,
+                          setState(() {
+                            quantity++;
+                          }),
+                        },
+                        icon: Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                  TextButton(
+                    onPressed: () => {
+                      setState(() {
+                        cardToModify.name = contTitle.text;
+                        cardToModify.content = contContent.text;
+                      }),
+                      controller.saveChanges(cardList),
+                      Navigator.of(context).pop(),
+                    },
+                    child: Text('Conferma'),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
 }
 
 Widget setUpAlertDialog(Map<String, int> count) {
-
   return Container(
     height: 100.0, // Change as per your requirement
     width: 300.0, // Change as per your requirement
@@ -190,7 +265,10 @@ Widget setUpAlertDialog(Map<String, int> count) {
       itemCount: count.keys.length,
       itemBuilder: (BuildContext context, int index) {
         print('tipo: ${count.keys.toList()[index]}');
-        return Text('Ci sono ${count[count.keys.toList()[index]]} carte di tipo ${count.keys.toList()[index]}', style: TextStyle(fontSize: 15),);
+        return Text(
+          'Ci sono ${count[count.keys.toList()[index]]} carte di tipo ${count.keys.toList()[index]}',
+          style: TextStyle(fontSize: 15),
+        );
       },
     ),
   );
