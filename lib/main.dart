@@ -5,6 +5,8 @@ import 'controllers/NewCardController.dart';
 import 'view/NewCardPage.dart';
 import 'controllers/ListCardController.dart';
 import 'view/ListCardPage.dart';
+import 'controllers/DrawCardController.dart';
+import 'view/DrawCardPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -144,6 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   gotoCard() {
     print('goto Card');
+    Navigator.push(context, MaterialPageRoute(builder: (context)=> DrawCardPage(controller: DrawCardController())),);
   }
 
   gotoCardList() {
