@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const PopupMenuItem<String>(
           value: 'show_cards',
           child: ListTile(
-            leading: Icon(Icons.list_alt, color: Colors.yellow),
+            leading: Icon(Icons.list_alt, color: Colors.orange),
             title: Text('Sfoglia Carte'),
           ),
         ),
