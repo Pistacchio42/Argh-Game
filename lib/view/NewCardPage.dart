@@ -81,7 +81,7 @@ class _NewCardPage extends State<NewCardPage> {
 
   typeWidget() {
     return SizedBox(
-      height: 120, // Fixed height for the carousel
+      height: 100, // Fixed height for the carousel
       child: InfiniteCarousel.builder(
         itemCount: GameCard.allTypes.length,
         itemExtent: 90,
@@ -101,24 +101,29 @@ class _NewCardPage extends State<NewCardPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  icon: AnimatedSize(
-                    duration: Duration(milliseconds: 200),
-                    curve: Curves.easeOut,
-                    child: Icon(
-                      GameCard.typeIcons[cardType] ?? Icons.question_mark,
-                      color: (type == cardType)
-                          ? GameCard.colorIcons[cardType]
-                          : Colors.blueGrey,
-                      size: (type == cardType) ? 70 : 50,
+                Expanded(
+                  child: Center(
+                    child: IconButton(
+                      icon: AnimatedSize(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeOut,
+                        child: Icon(
+                          GameCard.typeIcons[cardType] ?? Icons.question_mark,
+                          color: (type == cardType)
+                              ? GameCard.colorIcons[cardType]
+                              : Colors.blueGrey,
+                          size: (type == cardType) ? 60 : 45,
+                        ),
+                      ),
+                      onPressed: () => {
+                        type = cardType,
+                        onCardSelected(cardType),
+                        scrontroll.animateToItem(realIndex),
+                      },
                     ),
                   ),
-                  onPressed: () => {
-                    type = cardType,
-                    onCardSelected(cardType),
-                    scrontroll.animateToItem(realIndex),
-                  },
                 ),
+
                 Text(cardType, style: const TextStyle(fontSize: 12)),
               ],
             ),
