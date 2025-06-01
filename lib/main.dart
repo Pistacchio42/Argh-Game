@@ -7,6 +7,7 @@ import 'controllers/ListCardController.dart';
 import 'view/ListCardPage.dart';
 import 'controllers/DrawCardController.dart';
 import 'view/DrawCardPage.dart';
+import 'view/RulePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,10 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[getDropdown(),],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('mostra lista di scansioni');
-          _incrementCounter(); //va alla pagina di scansioni
-        },
+        onPressed: ()=> rules(),
         tooltip: 'regole',
         child: const Icon(Icons.question_mark),
       ),
@@ -156,6 +154,14 @@ class _MyHomePageState extends State<MyHomePage> {
       MaterialPageRoute(
         builder: (context) => ListCardPage(controller: ListCardController()),
       ),
+    );
+  }
+
+  void rules() {
+    print('goto Rules');
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context)=>RulePage()),
     );
   }
 }
