@@ -20,7 +20,12 @@ class _DrawCardPage extends State<DrawCardPage> {
 
   late List<GameCard> cardList = [];
 
-  late GameCard extractedCard ;
+  late GameCard extractedCard = GameCard(
+    'estarai la prima carta',
+    'clicca il pulsante li sotto',
+    0,
+    'Instruction',
+  );
 
   int toDraw = 0;
 
@@ -48,29 +53,77 @@ class _DrawCardPage extends State<DrawCardPage> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Icon(GameCard.typeIcons[extractedCard.type]?? Icons.question_mark),
-              Text(extractedCard.type ?? 'estrai una carta'),
-            ],
+          Padding(
+            padding: EdgeInsets.all(0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  decoration: iconDecoration(
+                    GameCard.colorIcons[extractedCard.type] ?? Colors.grey,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Icon(
+                      GameCard.typeIcons[extractedCard.type] ??
+                          Icons.question_mark,
+                      size: 55,
+                      color:
+                          GameCard.colorIcons[extractedCard.type] ??
+                          Colors.black45,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Container(
+                    width: 270,
+                    child: Text(
+                      extractedCard.name ?? 'estrai una carta',
+                      style: TextStyle(fontSize: 33),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          Text(extractedCard.content ?? ''),
+          Padding(padding: EdgeInsets.all(15), child: Container(
+            child: Text(
+              extractedCard.content ?? '',
+              maxLines: 8,
+              style: TextStyle(fontSize: 20),
+            ),
+            decoration: contentDecoration(
+              GameCard.colorIcons[extractedCard.type] ?? Colors.grey,
+            ),
+          ),)
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: draw()),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => draw(),
+        child: Icon(Icons.draw),
+      ),
     );
   }
 
-  draw(){
+  draw() {
+    if (toDraw < 1) Navigator.pop(context);
     var intValue = Random().nextInt(cardList.length);
     //ogni volta che estrai una carta togli una quantità
+    cardList[intValue].quantity--;
+    setState(() {
+      toDraw--;
+      extractedCard = cardList[intValue];
+    });
     //quando hai una carta che arriva a 0 rimuovila da CardList
+    if (cardList[intValue].quantity < 1) cardList.removeAt(intValue);
     //se cardlist è a 0 Navigator.pop;
     //aggiorna anche $toDraw
-
   }
 
   int allCards() {
@@ -80,4 +133,29 @@ class _DrawCardPage extends State<DrawCardPage> {
     }
     return total;
   }
+
+  BoxDecoration iconDecoration(Color col) {
+    return BoxDecoration(
+      color: invert(col),
+      border: Border.all(width: 4, color: col),
+      borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(color: Colors.black38, blurRadius: 3, offset: Offset(2, 5)),
+      ],
+    );
+  }
+
+  BoxDecoration contentDecoration(Color col) {
+    return BoxDecoration(
+      border: Border.all(color: col, width: 4), //Border.all
+      borderRadius: BorderRadius.vertical(),
+    );
+  }
+}
+
+Color invert(Color color) {
+  final r = 255 - color.red;
+  final g = 255 - color.green;
+  final b = 255 - color.blue;
+  return Color.fromARGB((color.opacity * 255).round(), r, g, b);
 }
