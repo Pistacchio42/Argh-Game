@@ -1,8 +1,8 @@
 import 'package:argh/models/GameCard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class RulePage extends StatefulWidget {
-
   const RulePage({super.key});
 
   @override
@@ -10,6 +10,8 @@ class RulePage extends StatefulWidget {
 }
 
 class _RulePage extends State<RulePage> {
+  final String SECURE_KEY = 'AHOY_RULE_LIST';
+  String _loadedSecureText = "";
 
   late List<GameCard> cardList = [];
 
@@ -22,9 +24,54 @@ class _RulePage extends State<RulePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: Text('Regole di gioco'),
+        backgroundColor: Colors.pink,
+        title: Text('Regole di gioco',style: TextStyle(color: Colors.white)),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showMovements(),
+              child: Text('come muoversi',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showPoints(),
+              child: Text('fare punti',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showAttack(),
+              child: Text('come attaccare',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showWin(),
+              child: Text('come vincere',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+          ],
+        ),
       ),
     );
   }
+
+  showWin() {
+    print('Win');
+  }
+
+  showPoints(){
+    print('Points');
+  }
+
+  showAttack(){
+    print('Attack');
+  }
+
+  showMovements() {
+    print('Movement');
+  }
 }
+
+
