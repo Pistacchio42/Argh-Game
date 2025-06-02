@@ -26,4 +26,6 @@ class DrawCardController{
     }).toList();
   }
 
+  //TODO aggiungi un controllo per Risorse scarse in modo che possa uscire solo da metà mazzo in poi
+
 }

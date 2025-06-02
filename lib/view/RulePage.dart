@@ -33,23 +33,33 @@ class _RulePage extends State<RulePage> {
           children: <Widget>[
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.pink),
-              onPressed: () => showMovements(),
-              child: Text('come muoversi',style: TextStyle(fontSize: 30, color: Colors.white),),
+              onPressed: () => showWin(),
+              child: Text('Come Vincere',style: TextStyle(fontSize: 30, color: Colors.white),),
             ),
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.pink),
-              onPressed: () => showPoints(),
-              child: Text('fare punti',style: TextStyle(fontSize: 30, color: Colors.white),),
+              onPressed: () => showMap(),
+              child: Text('Campo da Gioco',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showMovements(),
+              child: Text('Come Muoversi',style: TextStyle(fontSize: 30, color: Colors.white),),
             ),
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.pink),
               onPressed: () => showAttack(),
-              child: Text('come attaccare',style: TextStyle(fontSize: 30, color: Colors.white),),
+              child: Text('Attaccare avversari',style: TextStyle(fontSize: 30, color: Colors.white),),
             ),
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.pink),
-              onPressed: () => showWin(),
-              child: Text('come vincere',style: TextStyle(fontSize: 30, color: Colors.white),),
+              onPressed: () => showPoints(),
+              child: Text('Ricevere Bottino',style: TextStyle(fontSize: 30, color: Colors.white),),
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.pink),
+              onPressed: () => showEnd(),
+              child: Text('Fine del gioco',style: TextStyle(fontSize: 30, color: Colors.white),),
             ),
           ],
         ),
@@ -71,6 +81,14 @@ class _RulePage extends State<RulePage> {
 
   showMovements() {
     print('Movement');
+  }
+
+  void showMap() {
+    print('Map');
+  }
+
+  void showEnd() {
+    print('End');
   }
 }
 
