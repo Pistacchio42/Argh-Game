@@ -205,12 +205,12 @@
   },
   {
     "name": "Vento in poppa",
-    "content": "muoviti di due in più",
+    "content": "muoviti di due in più,",
     "qty": 1,
     "type": "Movimento"
   },
   {
-    "name": "Vento in poppa",
+    "name": "Altro vento in poppa",
     "content": "muoviti di tre in più",
     "qty": 1,
     "type": "Movimento"
@@ -230,6 +230,12 @@
   {
     "name": "Mulinello",
     "content": "un altro giocatore gira la tua nave, tu la muovi",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Oltre i confini del mare",
+    "content": "Se continui dritto oltre il bordo posiziona la barca dalla parte diametralmente opposta del tabellone",
     "qty": 1,
     "type": "Movimento"
   },
@@ -340,5 +346,29 @@
     "content": "lancia il dado e scarta quel numero di carte bottino",
     "qty": 2,
     "type": "Tesoro"
+  },
+  {
+    "name": "Nebbia Improvvisa",
+    "content": "Tutte le barche scartano il dado peggiore questo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Sfiga",
+    "content": "Tutte le barche scartano il dado migliore questo turno",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Cannone di vetro",
+    "content": "Questo turno puoi difenderti una sola volta",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Cazza la randa",
+    "content": "Questo turno il valore dei dadi può essere usato senza limitazioni",
+    "qty": 1,
+    "type": "Movimento"
   }
 ]
