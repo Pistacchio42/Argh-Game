@@ -88,7 +88,7 @@ class _DrawCardPage extends State<DrawCardPage> {
                   child: Container(
                     width: 270,
                     child: Text(
-                      extractedCard.name ?? 'estrai una carta',
+                      extractedCard.name,
                       style: TextStyle(fontSize: 33),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -101,7 +101,7 @@ class _DrawCardPage extends State<DrawCardPage> {
           ),
           Padding(padding: EdgeInsets.all(15), child: Container(
             child: Text(
-              extractedCard.content ?? '',
+              extractedCard.content,
               maxLines: 8,
               style: TextStyle(fontSize: 20),
             ),
