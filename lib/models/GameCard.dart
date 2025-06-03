@@ -14,7 +14,7 @@ class GameCard{
   int quantity=1;
   String type;
 
-  static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto','Isola'];
+  static const List<String> allTypes=['Tesoro', 'Movimento','Battaglia', 'Effetto','Isola','Endgame'];
 
   static const Map<String, IconData> typeIcons = {
     'Tesoro': Icons.diamond,
@@ -22,6 +22,7 @@ class GameCard{
     'Battaglia': MyFlutterApp.crossed_pistols,
     'Effetto': MyFlutterApp.tentacle,
     'Isola':MyFlutterApp.hive_emblem,
+    'Endgame' : MyFlutterApp.skull,
   };
 
   static const Map<String, Color> colorIcons = {
@@ -30,6 +31,7 @@ class GameCard{
     'Battaglia': Color.fromARGB(255,64, 64, 64),
     'Effetto': Color.fromARGB(255,199, 0, 57),
     'Isola': Color.fromARGB(255,190, 236, 120),
+    'Endgame': Color.fromARGB(255,190, 0, 0),
   };
 
   GameCard(this.name, this.content, this.quantity, this.type);
@@ -39,6 +41,7 @@ class GameCard{
   GameCard.battle(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Battaglia';
   GameCard.effect(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Effetto';
   GameCard.island(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Isola';
+  GameCard.end(name, content, quantity):name=name, content=content, this.quantity=quantity, type='Endgame';
 
   static Map<String, Function> allConstruction = {
     'Tesoro': (String name,String content,int _quantity)=>GameCard.loot(name, content, _quantity),
@@ -46,6 +49,7 @@ class GameCard{
     'Battaglia': (String name,String content,int _quantity)=>GameCard.battle(name, content, _quantity),
     'Effetto': (String name,String content,int _quantity)=>GameCard.effect(name, content, _quantity),
     'Isola': (String name,String content,int _quantity)=>GameCard.island(name, content, _quantity),
+    'Endgame': (String name,String content,int _quantity)=>GameCard.end(name, content, _quantity),
   };
 
   GameCard._(this.name, this.content,int quantity, this.type){

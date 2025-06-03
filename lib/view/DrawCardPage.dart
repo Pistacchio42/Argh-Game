@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:argh/models/GameCard.dart';
 import 'package:flutter/material.dart';
 import '../controllers/DrawCardController.dart';
@@ -14,12 +13,12 @@ class DrawCardPage extends StatefulWidget {
 }
 
 class _DrawCardPage extends State<DrawCardPage> {
-  late DrawCardController controller;
-
   _DrawCardPage(this.controller);
 
+  bool endgame=false;
+  late int all=0;
+  late DrawCardController controller;
   late List<GameCard> cardList = [];
-
   late GameCard extractedCard = GameCard(
     'estarai la prima carta',
     'clicca il pulsante li sotto',
@@ -28,6 +27,7 @@ class _DrawCardPage extends State<DrawCardPage> {
   );
 
   int toDraw = 0;
+  bool cardAck = false;
 
   @override
   initState() {
@@ -37,9 +37,16 @@ class _DrawCardPage extends State<DrawCardPage> {
         setState(() {
           cardList = value;
           toDraw = allCards();
+          all=(cardList.length/2).truncate();
         }),
       },
     );
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -112,7 +119,34 @@ class _DrawCardPage extends State<DrawCardPage> {
   }
 
   draw() {
-    if (toDraw < 1) Navigator.pop(context);
+    if(cardAck && toDraw>0){
+      setState(() {
+        extractedCard=GameCard("pesca", 'clicca sotto per pescare una carta', 1, "Test");
+      });
+      cardAck=!cardAck;
+      return;
+    }
+    if (toDraw < 1) {
+      Navigator.pop(context);
+      return;
+    }
+
+    print('$toDraw in $all');
+
+    if(!endgame && (toDraw<(all))){//estrai fine gioco
+      GameCard endgameCard= GameCard.allConstruction['Endgame']!(
+        'Risorse Scarse',
+        "da questo momento in poi, ogni volta che un giocatore attracca ad un porto, viene girata une cella dell\'isola, ripesca una carta",
+        1,
+      );
+      setState(() {
+        extractedCard=endgameCard;
+      });
+      cardAck=!cardAck;
+      endgame=true;
+      return;
+    }
+
     var intValue = Random().nextInt(cardList.length);
     //ogni volta che estrai una carta togli una quantità
     cardList[intValue].quantity--;
@@ -122,8 +156,7 @@ class _DrawCardPage extends State<DrawCardPage> {
     });
     //quando hai una carta che arriva a 0 rimuovila da CardList
     if (cardList[intValue].quantity < 1) cardList.removeAt(intValue);
-    //se cardlist è a 0 Navigator.pop;
-    //aggiorna anche $toDraw
+    cardAck=!cardAck;
   }
 
   int allCards() {
