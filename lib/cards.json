@@ -1,19 +1,25 @@
 [
   {
     "name": "Rumore di tempesta",
-    "content": "Un altro giocatore muove la tua barca per il prossimo turno",
+    "content": "Un altro giocatore muove la tua barca",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Maledizione Fantasma",
+    "content": "Ignora gli ostacoli nei movimenti",
     "qty": 1,
     "type": "Movimento"
   },
   {
     "name": "Mal di mare",
-    "content": "nel prossimo turno il giocatore non può girare",
+    "content": "questo turno non puoi girare",
     "qty": 1,
     "type": "Movimento"
   },
   {
     "name": "Maledizione dell'isola",
-    "content": "il giocatore non può approdare in nessun isola questo turno",
+    "content": "gli avversari non possono approdare in nessun isola questo turno",
     "qty": 1,
     "type": "Effetto"
   },
@@ -25,7 +31,7 @@
   },
   {
     "name": "Scorbuto",
-    "content": "ogni turno perdi un movimento, fino a quando non attracchi su un isola",
+    "content": "ogni turno il valore del dado migliore non conta, fino a quando non attracchi su un isola",
     "qty": 1,
     "type": "Movimento"
   },
@@ -37,13 +43,13 @@
   },
   {
     "name": "Bussola rotta",
-    "content": "non puoi approdare all'isola più vicina per il prossimo turno",
+    "content": "non puoi approdare questo turno",
     "qty": 1,
     "type": "Effetto"
   },
   {
     "name": "Vele rovinate",
-    "content": "ti puoi muovere solo di metà del numero dei dadi per questo turno",
+    "content": "ti puoi muovere solo di metà del numero dei dadi",
     "qty": 1,
     "type": "Movimento"
   },
@@ -97,13 +103,13 @@
   },
   {
     "name": "Diplomazia forzata",
-    "content": "mischia il tuo tesoro con quello di un avversario e dividi a metà il mazzo, se le carte sono dispari prendine una in più, conserva questa carta",
+    "content": "mischia il tuo tesoro con quello di un avversario e dividi a metà il mazzo, se le carte sono dispari prendine una in più",
     "qty": 1,
     "type": "Tesoro"
   },
   {
     "name": "Fidarsi del mare",
-    "content": "puoi ritirare un dado, conserva questa carta",
+    "content": "puoi ritirare un dado",
     "qty": 1,
     "type": "Effetto"
   },
@@ -114,26 +120,32 @@
     "type": "Battaglia"
   },
   {
+    "name": "Arcipelago non mappato",
+    "content": "piazza una casella isola nel tabellone senza che ostruisca l'attracco ai porti o chiuda giocatori in atolli",
+    "qty": 1,
+    "type": "Isola"
+  },
+  {
     "name": "Vera diplomazia",
-    "content": "condividi le tue risorse con un altro giocatore, conserva questa carta",
+    "content": "ad un approdo pesca una carta in più e dalla ad un avversario, conserva questa carta",
     "qty": 1,
     "type": "Tesoro"
   },
   {
     "name": "Commercio",
-    "content": "scambia una carta per attaccare con una carta bottino a caso di un altro giocatore",
+    "content": "scegli un giocatore che dovrà scartare un token attacco per pescare 2 carte bottino",
     "qty": 1,
     "type": "Effetto"
   },
   {
     "name": "Taglia sulla testa",
-    "content": "scegli un giocatore, chi sconfigge quel giocatore in un duello pesca una carta bottino oltre alle ricompense normali, conserva questa carta",
+    "content": "scegli un giocatore, chi sconfigge quel giocatore in un duello pesca due carte bottino oltre alle ricompense normali",
     "qty": 1,
     "type": "Tesoro"
   },
   {
     "name": "Prestare l'astrolabio",
-    "content": "scegli un altro giocatore che si muoverà di 2 in più il prossimo turno, conserva questa carta",
+    "content": "scegli un altro giocatore che si muoverà di 2 in più durante il suo turno",
     "qty": 1,
     "type": "Movimento"
   },
@@ -157,13 +169,13 @@
   },
   {
     "name": "Tempesta a largo",
-    "content": "i giocatori non attraccati ad un isola il prossimo turno, perdono una carta bottino",
+    "content": "i giocatori non attraccati ad un isola il prossimo turno, perdono due carte bottino",
     "qty": 1,
     "type": "Tesoro"
   },
   {
     "name": "Protezione dei locali",
-    "content": "appena attracchi un'isola puoi scartare una carta bottino scelta a caso per fare in modo che nessuno ti possa secgliere per niente nei prossimi 2 turni, conserva questa carta",
+    "content": "appena attracchi un'isola puoi scartare una carta bottino scelta a caso per fare in modo che nessuno ti possa secgliere per nessun effetto nei prossimi 2 turni, conserva questa carta",
     "qty": 1,
     "type": "Effetto"
   },
@@ -187,7 +199,13 @@
   },
   {
     "name": "Vento in poppa",
-    "content": "muoviti di due in più, da usare subito",
+    "content": "muoviti di due in più",
+    "qty": 1,
+    "type": "Movimento"
+  },
+  {
+    "name": "Vento in poppa",
+    "content": "muoviti di tre in più",
     "qty": 1,
     "type": "Movimento"
   },
@@ -199,7 +217,7 @@
   },
   {
     "name": "Navigare nel fiume",
-    "content": "dopo essere approdato su un'isola puoi mettere la nave dove preferisci sul perimetro dell'isola",
+    "content": "dopo essere approdato su un'isola puoi mettere la nave dove preferisci sul perimetro dell'isola, conserva questa carta",
     "qty": 1,
     "type": "Movimento"
   },
@@ -211,7 +229,7 @@
   },
   {
     "name": "Canti da mariani",
-    "content": "il morale alto ti fa ritirare un dado",
+    "content": "ritira quanti dadi vuoi",
     "qty": 1,
     "type": "Effetto"
   },
@@ -223,9 +241,9 @@
   },
   {
     "name": "Kraken in vista",
-    "content": "ritorna da dove sei arrivato per evitare il kraken",
+    "content": "Perdi tutti i token attacco e 2 bottini",
     "qty": 1,
-    "type": "Movimento"
+    "type": "Tesoro"
   },
   {
     "name": "Stormo di gabbiani",
@@ -295,7 +313,7 @@
   },
   {
     "name": "Commercio in mare aperto",
-    "content": "scarta una carta per attaccare, pesca due carte bottino",
+    "content": "scarta un token per attaccare, pesca due carte bottino",
     "qty": 4,
     "type": "Battaglia"
   },
