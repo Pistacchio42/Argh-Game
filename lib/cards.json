@@ -73,7 +73,7 @@
   },
   {
     "name": "Sensi di colpa",
-    "content": "ridai a un giocatore il bottino che gli hai rubato",
+    "content": "dai un bottino a caso all'ultimo giocatore a cui hai preso un bottino",
     "qty": 1,
     "type": "Effetto"
   },
