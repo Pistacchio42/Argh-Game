@@ -18,6 +18,12 @@
     "type": "Movimento"
   },
   {
+    "name": "Tantissime palle di cannone",
+    "content": "Durante questo turno puoi attaccare senza costo",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
     "name": "Maledizione dell'isola",
     "content": "gli avversari non possono approdare in nessun isola questo turno",
     "qty": 1,
@@ -175,7 +181,7 @@
   },
   {
     "name": "Protezione dei locali",
-    "content": "appena attracchi un'isola puoi scartare una carta bottino scelta a caso per fare in modo che nessuno ti possa secgliere per nessun effetto nei prossimi 2 turni, conserva questa carta",
+    "content": "appena attracchi puoi scartare una carta bottino a caso, perche nessuno ti possa secgliere per nessun effetto questo turno, conserva questa carta",
     "qty": 1,
     "type": "Effetto"
   },
@@ -187,13 +193,13 @@
   },
   {
     "name": "Nativi amichevoli",
-    "content": "pesca una carta attacco in più",
+    "content": "pesca una token attacco in più",
     "qty": 1,
     "type": "Effetto"
   },
   {
     "name": "Reliquia maledetta",
-    "content": "perdi un bottino ogni turno che hai questa carta, può essere passata attaccando un avversario e viene distrutta appena il giocatore che la possiede non ha più carte bottino",
+    "content": "perdi un bottino ogni turno che hai questa carta, attacca per passarla; viene distrutta appena il giocatore che la possiede non ha più carte bottino",
     "qty": 1,
     "type": "Tesoro"
   },
@@ -217,7 +223,7 @@
   },
   {
     "name": "Navigare nel fiume",
-    "content": "dopo essere approdato su un'isola puoi mettere la nave dove preferisci sul perimetro dell'isola, conserva questa carta",
+    "content": "dopo l'approdato su un'isola puoi mettere la nave dove preferisci sul perimetro dell'isola, conserva questa carta",
     "qty": 1,
     "type": "Movimento"
   },
@@ -271,14 +277,8 @@
   },
   {
     "name": "Canto delle sirene",
-    "content": "muovi le barche avversarie di 1 casella verso di te se non vanno incontro ad un isola, muovi anche quelle attraccate ai porti",
+    "content": "muovi tutte le barche avversarie di 1 casella verso di te se non vanno incontro ad un isola",
     "qty": 1,
-    "type": "Effetto"
-  },
-  {
-    "name": "Risorse scarse",
-    "content": "da questo momento in poi, ogni volta che un giocatore attracca ad un porto, viene girata une cella dell'isola; se non è la prima volta che peschi questa carta pesca una carta bottino",
-    "qty": 3,
     "type": "Effetto"
   },
   {
@@ -325,9 +325,15 @@
   },
   {
     "name": "Prepararsi all'attacco",
-    "content": "la prossima volta che attracchi ad un porto pesca carte per attaccare fino a quando non ne hai 5 (invece che le solite 3)",
+    "content": "la prossima volta che attracchi ad un porto pesca token attacco fino ad averne 5",
     "qty": 4,
     "type": "Battaglia"
+  },
+  {
+    "name": "Terremoto",
+    "content": "Ruota un porto di un isola, senza infrangere regole di piazzamento",
+    "qty": 4,
+    "type": "Isola"
   },
   {
     "name": "Veliero fantasma",

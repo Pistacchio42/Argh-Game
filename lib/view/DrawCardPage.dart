@@ -19,6 +19,7 @@ class _DrawCardPage extends State<DrawCardPage> {
   late int all=0;
   late DrawCardController controller;
   late List<GameCard> cardList = [];
+  List <GameCard> drawnCardList=[];
   late GameCard extractedCard = GameCard(
     'estarai la prima carta',
     'clicca il pulsante li sotto',
@@ -112,23 +113,23 @@ class _DrawCardPage extends State<DrawCardPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => draw(),
+        onPressed: () => {setState(() {
+          draw();
+        })},
         child: Icon(Icons.draw),
       ),
     );
   }
 
-  draw() {
+  GameCard draw() {
     if(cardAck && toDraw>0){
-      setState(() {
-        extractedCard=GameCard("pesca", 'clicca sotto per pescare una carta', 1, "Test");
-      });
+      extractedCard=GameCard("pesca", 'clicca sotto per pescare una carta', 1, "Test");
       cardAck=!cardAck;
-      return;
+      return extractedCard;
     }
     if (toDraw < 1) {
       Navigator.pop(context);
-      return;
+      return GameCard("pesca", 'clicca sotto per pescare una carta', 1, "Test");
     }
 
     print('$toDraw in $all');
@@ -139,12 +140,11 @@ class _DrawCardPage extends State<DrawCardPage> {
         "da questo momento in poi, ogni volta che un giocatore attracca ad un porto, viene girata une cella dell\'isola, ripesca una carta",
         1,
       );
-      setState(() {
-        extractedCard=endgameCard;
-      });
+      extractedCard=endgameCard;
+      drawnCardList.add(extractedCard);
       cardAck=!cardAck;
       endgame=true;
-      return;
+      return extractedCard;
     }
 
     var intValue = Random().nextInt(cardList.length);
@@ -152,11 +152,12 @@ class _DrawCardPage extends State<DrawCardPage> {
     cardList[intValue].quantity--;
     setState(() {
       toDraw--;
-      extractedCard = cardList[intValue];
     });
-    //quando hai una carta che arriva a 0 rimuovila da CardList
+    extractedCard = cardList[intValue];
+    drawnCardList.add(extractedCard);
     if (cardList[intValue].quantity < 1) cardList.removeAt(intValue);
     cardAck=!cardAck;
+    return extractedCard;
   }
 
   int allCards() {
