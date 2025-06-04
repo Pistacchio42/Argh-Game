@@ -366,9 +366,51 @@
     "type": "Battaglia"
   },
   {
+    "name": "Clandestino",
+    "content": "Dai una delle carte pescate ad un altro giocatore",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Quel pazzo di venerdì",
+    "content": "Se una carta permette ad un giocatore di muoverti, tu muovi lui il suo turno",
+    "qty": 1,
+    "type": "Effetto"
+  },
+  {
+    "name": "Ferro scadente",
+    "content": "Finchè hai questa carta puoi avere solo 2 token attacco scartami quando attracchi",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
     "name": "Cazza la randa",
     "content": "Questo turno il valore dei dadi può essere usato senza limitazioni",
     "qty": 1,
     "type": "Movimento"
+  },
+  {
+    "name": "Benda sull'altro occhio",
+    "content": "Questo turno tutti gli attacchi a distanza 1 sono assicurati",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Nessuna benda sull'occhio",
+    "content": "Questo turno tutti gli attacchi a distanza 2 sono assicurati",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Vendetta",
+    "content": "Se il turno scorso ti è stato rubato un bottino, attacca senza costo",
+    "qty": 1,
+    "type": "Battaglia"
+  },
+  {
+    "name": "Vendita di pesca",
+    "content": "Se la carta kraken è già uscita pesca 2 carte bottino",
+    "qty": 1,
+    "type": "Tesoro"
   }
 ]
