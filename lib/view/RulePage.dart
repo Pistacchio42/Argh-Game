@@ -1,6 +1,7 @@
 import 'package:argh/models/GameCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:argh/view/rules.dart';
 
 class RulePage extends StatefulWidget {
   const RulePage({super.key});
@@ -69,26 +70,32 @@ class _RulePage extends State<RulePage> {
 
   showWin() {
     print('Win');
+    rules().showWin(context);
   }
 
   showPoints(){
     print('Points');
+    rules().showPoints(context);
   }
 
   showAttack(){
     print('Attack');
+    rules().showAttack(context);
   }
 
   showMovements() {
     print('Movement');
+    rules().showMovements(context);
   }
 
   void showMap() {
     print('Map');
+    rules().showMap(context);
   }
 
   void showEnd() {
     print('End');
+    rules().showEnd(context);
   }
 }
 
