@@ -115,8 +115,8 @@ class rules{
                 Text(
                   '1. Usa un token Attacco durante il tuo turno.\n'
                       '2. Scegli un avversario nella tua zona di attacco (vedi immagine).\n'
-                      '\tOffrigli una possibilità di risolvere il conflitto in modo pacifico, chiedi che ti vengano date delle carte\n'
-                      '\tse il difensore accetta, la battaglia finisce, Se l\' offerta viene rifiutata\n'
+                      'Offrigli una possibilità di risolvere il conflitto in modo pacifico, chiedi che ti vengano date delle carte\n'
+                      'Se il difensore accetta, la battaglia finisce, Se l\' offerta viene rifiutata\n\n'
                       '3. Risolvi la battaglia:',
                   style: TextStyle(fontSize: 18),
                 ),
@@ -147,16 +147,16 @@ class rules{
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'pescate una carta bottino a testa, quella col valore più alto vince',
+                  'pescate una carta bottino a testa, chi ha il valore più alto vince',
                   style: TextStyle(fontSize: 18),
                 ),
                 Text(
-                  '- Se vinci: peschi le carte richieste +1 pescata.\n'
+                  '- Se vinci: peschi le carte richieste + la carta pescata.\n'
                       '- Il difensore può contrattaccare se ha token, e la battaglia si rifà coi ruoli invertiti',
                   style: TextStyle(fontSize: 18),
                 ),
                 // Immagine zone di attacco
-                // Image.asset('assets/attacco.png'),
+                Image.asset("lib/resources/illustration/full_attack.png"),
               ],
             ),
           ),
