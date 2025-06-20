@@ -113,10 +113,25 @@ class rules{
                 ),
                 SizedBox(height: 10),
                 Text(
+                  'Esempio di zone di attacco:',
+                  style: TextStyle(fontSize: 14),
+                ),
+                Text(
+                  'Questi pattern vanno pattuiti ad inizio partita',
+                  style: TextStyle(fontSize: 12),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(child: Image.asset("assets/illustration/full_attack.png"), height: 200, width: 180,),
+                    SizedBox(child: Image.asset("assets/illustration/simple_attack.png"), height: 200, width: 180,),
+                  ],
+                ),
+                Text(
                   '1. Usa un token Attacco durante il tuo turno.\n'
                       '2. Scegli un avversario nella tua zona di attacco (vedi immagine).\n'
-                      'Offrigli una possibilità di risolvere il conflitto in modo pacifico, chiedi che ti vengano date delle carte\n'
-                      'Se il difensore accetta, la battaglia finisce, Se l\' offerta viene rifiutata\n\n'
+                      'Offrigli una possibilità di risolvere il conflitto in modo pacifico, chiedi che ti vengano date delle carte.\n'
+                      'Se il difensore accetta, la battaglia finisce\nSe invece l\' offerta viene rifiutata\n\n'
                       '3. Risolvi la battaglia:',
                   style: TextStyle(fontSize: 18),
                 ),
@@ -126,7 +141,7 @@ class rules{
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  'lancia un dado per vedere se colpisci il difensore, se lo manchi il combattimento finisce qui',
+                  'lancia un dado per vedere se colpisci il difensore, se lo manchi il combattimento può finire qui',
                   style: TextStyle(fontSize: 18),
                 ),
                 ListTile(
@@ -152,11 +167,10 @@ class rules{
                 ),
                 Text(
                   '- Se vinci: peschi le carte richieste + la carta pescata.\n'
-                      '- Il difensore può contrattaccare se ha token, e la battaglia si rifà coi ruoli invertiti',
+                      '- Il difensore può contrattaccare spendendo un token, e la battaglia rincomincia coi ruoli invertiti\n',
                   style: TextStyle(fontSize: 18),
                 ),
                 // Immagine zone di attacco
-                Image.asset("lib/resources/illustration/full_attack.png"),
               ],
             ),
           ),
@@ -307,8 +321,8 @@ class rules{
                 Text(
                   '1. Visita più isole possibile prima che finiscano le risorse.\n'
                       '2. Usa gli attacchi per rubare carte agli avversari.\n'
-                      '3. Gestisci bene i token di Attacco (ripristinali attraccando).\n'
-                      '4. Tieni d\'occhio la carta "Risorse Scarse": segnala la fase finale!',
+                      '3. Gestisci bene i token di Attacco (ripristinali attraccando ai porti).\n'
+                      '4. Tieni d\'occhio la carta "Risorse Scarse": segnala la fase finale di gioco!',
                   style: TextStyle(fontSize: 18),
                 ),
                 // Aggiungi un'immagine esplicativa se disponibile
